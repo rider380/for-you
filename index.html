@@ -1,135 +1,699 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#090909">
-  <title>For My Pichidhana ♡</title>
-  <style>
-    :root { --bg:#090909; --text:#f5f1ec; --muted:#b7b0aa; --accent:#d7b48b; }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; background:var(--bg); color:var(--text); font-family: Georgia, "Times New Roman", serif; }
-    body::before { content:""; position:fixed; inset:0; pointer-events:none; z-index:5; opacity:.12;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E"); }
-    .hero { min-height:100svh; display:grid; place-items:center; text-align:center; padding:40px 22px; position:relative; overflow:hidden;
-      background:radial-gradient(ellipse at 50% 40%, #30251f 0%, #151211 35%, #090909 75%); }
-    .hero::after { content:""; position:absolute; width:360px; height:360px; border:1px solid #d7b48b22; border-radius:50%; box-shadow:0 0 100px #d7b48b0b; }
-    .hero-inner { position:relative; z-index:1; animation:rise 1.5s ease both; }
-    .eyebrow { text-transform:uppercase; letter-spacing:.38em; color:var(--accent); font:10px/1.8 Arial,sans-serif; }
-    h1 { font-size:clamp(44px,9vw,94px); font-weight:400; line-height:1.02; margin:22px 0 14px; letter-spacing:-.045em; }
-    .hero p { color:#c9c0b8; font-size:clamp(14px,2vw,18px); letter-spacing:.04em; }
-    .scroll { display:inline-block; margin-top:50px; color:var(--muted); text-decoration:none; font:10px Arial,sans-serif; letter-spacing:.25em; text-transform:uppercase; }
-    .scroll::after { content:""; display:block; height:35px; width:1px; background:linear-gradient(var(--accent),transparent); margin:15px auto 0; }
-    main { max-width:1100px; margin:auto; padding:12px 20px 100px; }
-    .intro { text-align:center; padding:70px 10px 55px; }
-    .intro .small { color:var(--accent); font:10px Arial,sans-serif; letter-spacing:.32em; text-transform:uppercase; }
-    .intro h2 { font-size:clamp(26px,4vw,40px); font-weight:400; margin:18px 0 10px; }
-    .intro p { color:var(--muted); font-size:15px; line-height:1.8; margin:0; }
-    .gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:70px 28px; align-items:start; }
-    .memory { margin:0; opacity:0; transform:translateY(28px); transition:opacity 1s ease, transform 1s ease; }
-    .memory.visible { opacity:1; transform:translateY(0); }
-    .memory:nth-child(even) { margin-top:95px; }
-    .frame { overflow:hidden; background:#171513; position:relative; }
-    .frame::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 60%,#0005); pointer-events:none; }
-    .frame img { display:block; width:100%; height:clamp(300px,55vw,650px); object-fit:cover; transition:transform 1.5s cubic-bezier(.2,.7,.2,1), filter 1.5s ease; filter:saturate(.88) contrast(1.03); }
-    .memory:nth-child(1) .frame img { object-position:center 35%; }
-    .memory:nth-child(2) .frame img { object-position:center 45%; }
-    .memory:nth-child(3) .frame img { object-position:center 40%; }
-    .memory:nth-child(4) .frame img { object-position:center 50%; }
-    .memory:nth-child(5) .frame img { object-position:center 35%; }
-    .memory:nth-child(6) .frame img { object-position:center 45%; }
-    .frame:hover img { transform:scale(1.045); filter:saturate(1) contrast(1.05); }
-    figcaption { text-align:center; padding:22px 10px 0; }
-    .number { color:var(--accent); font:9px Arial,sans-serif; letter-spacing:.28em; }
-    figcaption p { margin:11px 0 0; font-size:clamp(17px,2vw,22px); font-style:italic; color:#e8dfd7; line-height:1.5; }
-    .ending { text-align:center; padding:120px 15px 50px; }
-    .ending .line { width:45px; height:1px; background:var(--accent); margin:0 auto 28px; }
-    .ending h2 { font-weight:400; font-size:clamp(30px,5vw,54px); margin:0 0 18px; }
-    .ending p { color:var(--muted); line-height:1.9; font-size:15px; }
-    .heart { color:var(--accent); font-size:18px; display:inline-block; animation:pulse 2s ease-in-out infinite; }
-    footer { text-align:center; color:#706a65; padding:30px 15px 40px; font:9px Arial,sans-serif; letter-spacing:.24em; text-transform:uppercase; }
-    @keyframes rise { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes pulse { 0%,100% { transform:scale(1); opacity:.75; } 50% { transform:scale(1.13); opacity:1; } }
-    @media (max-width:650px) {
-      main { padding-left:14px; padding-right:14px; }
-      .gallery { grid-template-columns:1fr; gap:48px; }
-      .memory:nth-child(even) { margin-top:0; }
-      .frame img { height:auto; max-height:78svh; min-height:330px; }
-      .intro { padding-top:55px; }
-      .ending { padding-top:90px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+
+<title>For My Pichidhana ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080808;
+    color: #f5eee8;
+    font-family: Georgia, "Times New Roman", serif;
+    overflow-x: hidden;
+}
+
+/* CINEMATIC INTRO */
+
+.intro {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: radial-gradient(circle, #30201f, #080808 75%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    transition: opacity 1.2s, visibility 1.2s;
+}
+
+.intro.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.intro-content {
+    animation: fadeUp 1.5s ease;
+}
+
+.small-title {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: #d8b58b;
+    text-transform: uppercase;
+}
+
+.intro h1 {
+    font-size: clamp(45px, 10vw, 85px);
+    font-weight: normal;
+    line-height: 1.1;
+    margin: 25px 0;
+}
+
+.intro h1 em {
+    color: #d99b9e;
+}
+
+.intro p {
+    color: #c5b7af;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.open-btn {
+    margin-top: 35px;
+    padding: 15px 27px;
+    border: 1px solid #d8b58b80;
+    color: white;
+    background: transparent;
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-size: 11px;
+    transition: .4s;
+}
+
+.open-btn:hover {
+    background: #d8b58b;
+    color: black;
+}
+
+/* HERO SECTION */
+
+.hero {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px 20px;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #342320 0%,
+            #17100f 40%,
+            #080808 80%
+        );
+}
+
+.circle {
+    position: absolute;
+    width: min(75vw, 550px);
+    aspect-ratio: 1;
+    border: 1px solid #d8b58b20;
+    border-radius: 50%;
+    animation: rotate 35s linear infinite;
+}
+
+.circle.second {
+    width: min(58vw, 420px);
+    animation-direction: reverse;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 2s ease;
+}
+
+.hero h2 {
+    font-size: clamp(50px, 11vw, 105px);
+    font-weight: normal;
+    line-height: 1;
+    margin: 28px 0;
+    letter-spacing: -3px;
+}
+
+.hero h2 em {
+    color: #d99b9e;
+}
+
+.hero p {
+    color: #c6b9b0;
+    line-height: 2;
+    font-size: 15px;
+}
+
+.scroll {
+    display: inline-block;
+    margin-top: 45px;
+    color: #d8b58b;
+    text-decoration: none;
+    font: 10px Arial, sans-serif;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.scroll::after {
+    content: "";
+    display: block;
+    height: 40px;
+    width: 1px;
+    margin: 15px auto;
+    background: linear-gradient(#d8b58b, transparent);
+}
+
+/* INTRODUCTION */
+
+.introduction {
+    text-align: center;
+    padding: 100px 20px 65px;
+}
+
+.label {
+    color: #d99b9e;
+    font: 10px Arial, sans-serif;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.introduction h2 {
+    font-size: clamp(28px, 5vw, 45px);
+    font-weight: normal;
+    margin: 25px 0 18px;
+}
+
+.introduction p {
+    max-width: 580px;
+    margin: auto;
+    color: #b9aaa0;
+    font-size: 15px;
+    line-height: 2;
+}
+
+/* PHOTO GALLERY */
+
+.gallery {
+    max-width: 1100px;
+    padding: 0 22px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 80px 30px;
+}
+
+.photo {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 1.3s ease, transform 1.3s ease;
+}
+
+.photo.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.photo:nth-child(even) {
+    margin-top: 100px;
+}
+
+.photo-frame {
+    overflow: hidden;
+    background: #15110f;
+    position: relative;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: clamp(330px, 55vw, 650px);
+    display: block;
+    object-fit: cover;
+    filter: saturate(.88) contrast(1.04);
+    transition: transform 2s ease, filter 2s ease;
+}
+
+.photo-frame:hover img {
+    transform: scale(1.055);
+    filter: saturate(1.05);
+}
+
+.photo-number {
+    font: 9px Arial, sans-serif;
+    color: #d8b58b;
+    letter-spacing: 3px;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.caption {
+    text-align: center;
+    font-size: clamp(18px, 2.5vw, 25px);
+    font-style: italic;
+    line-height: 1.6;
+    margin-top: 13px;
+    color: #eee3da;
+}
+
+.caption-small {
+    text-align: center;
+    color: #95857b;
+    font: 10px Arial, sans-serif;
+    letter-spacing: 1px;
+    margin-top: 8px;
+    line-height: 1.8;
+}
+
+/* LOVE LETTER */
+
+.letter {
+    max-width: 760px;
+    margin: 140px auto 40px;
+    padding: 55px 25px;
+    text-align: center;
+    border-top: 1px solid #d8b58b35;
+    border-bottom: 1px solid #d8b58b35;
+}
+
+.letter h2 {
+    font-size: clamp(32px, 6vw, 55px);
+    font-weight: normal;
+    margin: 25px 0;
+}
+
+.letter p {
+    color: #c9bbb2;
+    font-size: 16px;
+    line-height: 2.1;
+    margin: 18px auto;
+}
+
+.signature {
+    color: #d99b9e !important;
+    font-style: italic;
+    font-size: 22px !important;
+    margin-top: 30px !important;
+}
+
+/* ENDING */
+
+.ending {
+    text-align: center;
+    padding: 110px 20px 80px;
+}
+
+.heart {
+    color: #d99b9e;
+    font-size: 25px;
+    animation: heartbeat 2s infinite;
+    display: inline-block;
+}
+
+.ending h2 {
+    font-size: clamp(38px, 8vw, 75px);
+    font-weight: normal;
+    margin: 25px 0;
+    line-height: 1.2;
+}
+
+.ending h2 em {
+    color: #d99b9e;
+}
+
+.ending p {
+    font: 10px Arial, sans-serif;
+    letter-spacing: 3px;
+    line-height: 2;
+    color: #95857b;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    font: 9px Arial, sans-serif;
+    letter-spacing: 3px;
+    color: #625a55;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
     }
-    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } .memory { opacity:1; transform:none; } }
-  </style>
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* FLOATING PARTICLES */
+
+.particle {
+    position: fixed;
+    bottom: -20px;
+    z-index: 5;
+    color: #d8b58b;
+    pointer-events: none;
+    animation: floatUp 8s linear forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    15% { opacity: .6; }
+    85% { opacity: .4; }
+    100% {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 55px;
+        padding: 0 15px;
+    }
+
+    .photo:nth-child(even) {
+        margin-top: 0;
+    }
+
+    .photo-frame img {
+        height: auto;
+        min-height: 350px;
+        max-height: 80svh;
+    }
+
+    .letter {
+        margin: 90px 15px 30px;
+        padding: 45px 12px;
+    }
+
+    .introduction {
+        padding-top: 70px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+
+    .photo {
+        opacity: 1;
+        transform: none;
+    }
+}
+</style>
 </head>
+
 <body>
-  <header class="hero">
-    <div class="hero-inner">
-      <div class="eyebrow">A little corner of my heart</div>
-      <h1>For My<br><em>Pichidhana</em></h1>
-      <p>Some feelings are beautiful when kept simple.</p>
-      <a class="scroll" href="#memories">Take a little look</a>
+
+<!-- OPENING SCREEN -->
+
+<section class="intro" id="intro">
+    <div class="intro-content">
+        <div class="small-title">A little something from my heart</div>
+
+        <h1>
+            For My<br>
+            <em>Pichidhana</em>
+        </h1>
+
+        <p>
+            Not a big story.<br>
+            Just a feeling I wanted you to see.
+        </p>
+
+        <button class="open-btn" onclick="openWebsite()">
+            Open with love ♡
+        </button>
     </div>
-  </header>
+</section>
 
-  <main id="memories">
-    <section class="intro">
-      <div class="small">Just you, in your own little world</div>
-      <h2>Little moments. A lot of meaning.</h2>
-      <p>No big words. Just a few things my heart wanted to say.</p>
-    </section>
+<!-- HERO -->
 
-    <section class="gallery" aria-label="Photo memories">
-      <figure class="memory">
-        <div class="frame"><img src="photos/photo1.jpg" alt="" loading="lazy"></div>
-        <figcaption><span class="number">01 — A FAVORITE MOMENT</span><p>My favorite person. ♡</p></figcaption>
-      </figure>
-      <figure class="memory">
-        <div class="frame"><img src="photos/photo2.jpg" alt="" loading="lazy"></div>
-        <figcaption><span class="number">02 — A QUIET KIND OF MAGIC</span><p>In my world, it's you.</p></figcaption>
-      </figure>
-      <figure class="memory">
-        <div class="frame"><img src="photos/photo3.jpg" alt="" loading="lazy"></div>
-        <figcaption><span class="number">03 — JUST THE WAY YOU ARE</span><p>Your smile says enough.</p></figcaption>
-      </figure>
-      <figure class="memory">
-        <div class="frame"><img src="photos/photo4.jpg" alt="" loading="lazy"></div>
-        <figcaption><span class="number">04 — A LITTLE DAYDREAM</span><p>Some feelings need no words.</p></figcaption>
-      </figure>
-      <figure class="memory">
-        <div class="frame"><img src="photos/photo5.jpg" alt="" loading="lazy"></div>
-        <figcaption><span class="number">05 — MY SOFTEST THOUGHT</span><p>You mean more than you know.</p></figcaption>
-      </figure>
-      <figure class="memory">
-        <div class="frame"><img src="photos/photo6.jpg" alt="" loading="lazy"></div>
-        <figcaption><span class="number">06 — ALWAYS SPECIAL</span><p>A little piece of my heart. ♡</p></figcaption>
-      </figure>
-    </section>
+<header class="hero">
 
-    <section class="ending">
-      <div class="line"></div>
-      <h2>Always you.</h2>
-      <p>Not loud. Not perfect.<br>Just something real, kept close to my heart.</p>
-      <span class="heart">♡</span>
-    </section>
-  </main>
-  <footer>Made with love · For my Pichidhana</footer>
+    <div class="circle"></div>
+    <div class="circle second"></div>
 
-  <script>
-    const items = document.querySelectorAll('.memory');
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
+    <div class="hero-content">
+        <div class="small-title">To someone truly special</div>
+
+        <h2>
+            My little<br>
+            <em>universe.</em>
+        </h2>
+
+        <p>
+            Some people make ordinary moments<br>
+            feel quietly beautiful.
+        </p>
+
+        <a class="scroll" href="#memories">
+            Explore these moments
+        </a>
+    </div>
+
+</header>
+
+<!-- INTRODUCTION -->
+
+<section class="introduction" id="memories">
+
+    <div class="label">A few words, just for you</div>
+
+    <h2>Nothing loud. Just real.</h2>
+
+    <p>
+        Every photo holds a little moment.
+        Behind these moments, there is a feeling
+        I don't always know how to put into words.
+    </p>
+
+</section>
+
+<!-- YOUR SIX PHOTOS -->
+
+<section class="gallery">
+
+    <article class="photo">
+        <div class="photo-frame">
+            <img src="photo1.jpg" alt="" loading="lazy">
+        </div>
+
+        <div class="photo-number">01 — A FAVORITE MOMENT</div>
+        <p class="caption">My favorite person. ♡</p>
+        <p class="caption-small">A smile I never get tired of.</p>
+    </article>
+
+    <article class="photo">
+        <div class="photo-frame">
+            <img src="photo2.jpg" alt="" loading="lazy">
+        </div>
+
+        <div class="photo-number">02 — A QUIET KIND OF MAGIC</div>
+        <p class="caption">In my world, it's you.</p>
+        <p class="caption-small">Simple as that.</p>
+    </article>
+
+    <article class="photo">
+        <div class="photo-frame">
+            <img src="photo3.jpg" alt="" loading="lazy">
+        </div>
+
+        <div class="photo-number">03 — JUST THE WAY YOU ARE</div>
+        <p class="caption">Your smile says enough.</p>
+        <p class="caption-small">Some things feel like sunshine.</p>
+    </article>
+
+    <article class="photo">
+        <div class="photo-frame">
+            <img src="photo4.jpg" alt="" loading="lazy">
+        </div>
+
+        <div class="photo-number">04 — A LITTLE DAYDREAM</div>
+        <p class="caption">Some feelings need no words.</p>
+        <p class="caption-small">The heart understands.</p>
+    </article>
+
+    <article class="photo">
+        <div class="photo-frame">
+            <img src="photo5.jpg" alt="" loading="lazy">
+        </div>
+
+        <div class="photo-number">05 — MY SOFTEST THOUGHT</div>
+        <p class="caption">You mean more than you know.</p>
+        <p class="caption-small">Even the little things matter.</p>
+    </article>
+
+    <article class="photo">
+        <div class="photo-frame">
+            <img src="photo6.jpg" alt="" loading="lazy">
+        </div>
+
+        <div class="photo-number">06 — ALWAYS SPECIAL</div>
+        <p class="caption">A little piece of my heart. ♡</p>
+        <p class="caption-small">Kept close, always.</p>
+    </article>
+
+</section>
+
+<!-- PERSONAL LOVE LETTER -->
+
+<section class="letter">
+
+    <div class="label">One thing I want you to know</div>
+
+    <h2>My Pichidhana,</h2>
+
+    <p>
+        I may not always find the perfect words,
+        but you have a special place in my heart.
+        Even the smallest things about you can make
+        an ordinary day feel different.
+    </p>
+
+    <p>
+        This little page is my way of saying:
+        you matter to me, more than these few lines
+        could ever explain.
+    </p>
+
+    <p>
+        No grand promises here.
+        Just a feeling I wanted you to see.
+    </p>
+
+    <p class="signature">With all my heart, ♡</p>
+
+</section>
+
+<!-- ENDING -->
+
+<section class="ending">
+
+    <div class="heart">♡</div>
+
+    <h2>
+        Always special.<br>
+        <em>Always you.</em>
+    </h2>
+
+    <p>
+        MADE OF LITTLE MOMENTS<br>
+        & A REAL FEELING
+    </p>
+
+</section>
+
+<footer>
+    Made with love · For my Pichidhana
+</footer>
+
+<script>
+
+function openWebsite() {
+    const intro = document.getElementById("intro");
+
+    intro.classList.add("hide");
+
+    setTimeout(() => {
+        intro.style.display = "none";
+    }, 1300);
+}
+
+/* SMOOTH PHOTO REVEAL */
+
+const photos = document.querySelectorAll(".photo");
+
+if ("IntersectionObserver" in window) {
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target);
+            }
+
         });
-      }, { threshold: 0.12 });
-      items.forEach(item => observer.observe(item));
-    } else {
-      items.forEach(item => item.classList.add('visible'));
-    }
-  </script>
+
+    }, {
+        threshold: 0.12
+    });
+
+    photos.forEach((photo) => {
+        observer.observe(photo);
+    });
+
+} else {
+
+    photos.forEach((photo) => {
+        photo.classList.add("show");
+    });
+
+}
+
+/* SUBTLE FLOATING PARTICLES */
+
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+
+    setInterval(() => {
+
+        const particle = document.createElement("span");
+
+        particle.className = "particle";
+
+        particle.textContent =
+            Math.random() > 0.5 ? "♡" : "✦";
+
+        particle.style.left = Math.random() * 100 + "vw";
+
+        particle.style.fontSize =
+            (Math.random() * 8 + 10) + "px";
+
+        particle.style.animationDuration =
+            (Math.random() * 4 + 7) + "s";
+
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+            particle.remove();
+        }, 12000);
+
+    }, 1500);
+
+}
+
+</script>
+
 </body>
 </html>
